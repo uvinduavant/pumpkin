@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halloween Pumpkin Game</title>
+    <style>
+        body {
+            background-color: #000;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        .game-container {
+            margin-top: 50px;
+        }
+        .pumpkin {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Halloween Pumpkin Game</h1>
+    <p>Click on the pumpkins to score points!</p>
+    <p>Score: <span id="score">0</span></p>
+    <div class="game-container">
+        <!-- Pumpkins will be added here using JavaScript -->
+    </div>
+
+    <script>
+        let score = 0;
+
+        function addPumpkin() {
+            const pumpkin = document.createElement("img");
+            pumpkin.src = "pumpkin.png"; // You need to provide an image URL here
+            pumpkin.classList.add("pumpkin");
+
+            pumpkin.addEventListener("click", () => {
+                score += 10;
+                document.getElementById("score").textContent = score;
+                pumpkin.remove();
+            });
+
+            document.querySelector(".game-container").appendChild(pumpkin);
+        }
+
+        // Add pumpkins periodically
+        setInterval(addPumpkin, 1000);
+
+    </script>
+</body>
+</html>
